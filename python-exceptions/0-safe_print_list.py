@@ -1,21 +1,12 @@
 #!/usr/bin/python3
 
 def safe_print_list(my_list=[], x=0):
-    """Prints x elements of a list safely.
-
-    Args:
-        my_list (list): The list to print elements from.
-        x (int): The number of elements to print.
-
-    Returns:
-        int: The actual number of elements printed.
-    """
-    count = 0
+    count = 0  # Counter for printed elements
     try:
-        for i in range(x):
-            print(my_list[i], end="")  # Print element without newline
-            count += 1
-    except IndexError:
-        pass  # If index is out of range, ignore and continue
-    print()  # Print a new line at the end
-    return count  # Return number of elements successfully printed
+        for i in range(x):  # Loop x times
+            print(my_list[i], end="")  # Print without newline
+            count += 1  # Increase count
+    except IndexError:  # If we go out of bounds, do nothing
+        pass
+    print()  # Print newline after printing elements
+    return count  # Return number of elements printed
