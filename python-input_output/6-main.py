@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-# Test with different JSON files
 filename = "my_list.json"
 my_list = load_from_json_file(filename)
 print(my_list)
@@ -12,7 +11,6 @@ my_dict = load_from_json_file(filename)
 print(my_dict)
 print(type(my_dict))
 
-# Non-existent file
 try:
     filename = "my_set_doesnt_exist.json"
     my_set = load_from_json_file(filename)
@@ -21,7 +19,6 @@ try:
 except Exception as e:
     print("[{}] {}".format(e.__class__.__name__, e))
 
-# Invalid JSON file (my_fake.json)
 try:
     filename = "my_fake.json"
     my_fake = load_from_json_file(filename)
