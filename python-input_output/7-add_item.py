@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This script adds command-line arguments to a list and saves the list to a JSON file.
+If the file does not exist, it will be created. If the file already exists, the list
+is loaded and new items are appended to it. The updated list is then saved back to the file.
+"""
 import sys
 import os
 from importlib import import_module
