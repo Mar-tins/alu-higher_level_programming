@@ -1,28 +1,25 @@
 #!/usr/bin/python3
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-filename = "my_list.json"
-my_list = load_from_json_file(filename)
-print(my_list)
-print(type(my_list))
+# Valid test cases
+files = ["my_list.json", "my_dict.json", "my_dict_with_list.json", "big_dict.json", "big_array_of_dicts.json", "simple_string.json"]
 
-filename = "my_dict.json"
-my_dict = load_from_json_file(filename)
-print(my_dict)
-print(type(my_dict))
+for filename in files:
+    try:
+        data = load_from_json_file(filename)
+        print("✅ Successfully loaded:", filename)
+        print("➡️", data)
+        print("Type:", type(data), "\n")
+    except Exception as e:
+        print("❌ Error loading:", filename)
+        print("[{}] {}".format(e.__class__.__name__, e))
 
-try:
-    filename = "my_set_doesnt_exist.json"
-    my_set = load_from_json_file(filename)
-    print(my_set)
-    print(type(my_set))
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+# Invalid test cases (File not found & Permission error)
+invalid_files = ["file_does_not_exist.json", "no_permission.json"]
 
-try:
-    filename = "my_fake.json"
-    my_fake = load_from_json_file(filename)
-    print(my_fake)
-    print(type(my_fake))
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+for filename in invalid_files:
+    try:
+        data = load_from_json_file(filename)
+    except Exception as e:
+        print("❌ Expected error:", filename)
+        print("[{}] {}".format(e.__class__.__name__, e), "\n")
